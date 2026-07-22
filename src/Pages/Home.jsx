@@ -369,7 +369,7 @@ export default function Home() {
       {/* ── Hero Section (Matches Reference Design Exactly) ──────────────── */}
       <section
         id="hero"
-        className={`w-full min-h-screen sticky top-0 z-10 bg-white pt-16 sm:pt-20 md:pt-24 flex flex-col justify-between overflow-hidden transition-opacity duration-300 ${
+        className={`w-full min-h-screen sm:sticky top-0 z-10 bg-white pt-16 sm:pt-20 md:pt-24 flex flex-col justify-between overflow-hidden transition-opacity duration-300 ${
           isPastHero ? 'opacity-0 pointer-events-none invisible' : 'opacity-100'
         }`}
       >
@@ -377,12 +377,12 @@ export default function Home() {
         {/* Floating Right Badge: P. Honors (Scoped to Hero Section) */}
         <div 
           onClick={() => setIsHonorsOpen(true)}
-          className="absolute right-0 top-[60%] sm:top-[65%] -translate-y-1/2 z-40 hidden sm:flex flex-col items-center bg-black text-white py-4 px-2 w-9 sm:w-10 rounded-none shadow-2xl border-l border-t border-b border-gray-800 select-none cursor-pointer hover:bg-gray-900 transition-colors"
+          className="absolute right-0 top-[45%] sm:top-[65%] -translate-y-1/2 z-40 flex flex-col items-center bg-black text-white py-2 sm:py-4 px-2 w-8 sm:w-10 rounded-none shadow-2xl border-l border-t border-b border-gray-800 select-none cursor-pointer hover:bg-gray-900 transition-colors"
         >
-          <span className="text-xl font-black tracking-tight text-white mb-4 font-sans">
+          <span className="text-xl font-black tracking-tight text-white mb-0 sm:mb-4 font-sans">
             P.
           </span>
-          <span className="text-[11px] font-semibold tracking-widest text-gray-200 uppercase rotate-90 whitespace-nowrap my-5">
+          <span className="hidden sm:inline-block text-[11px] font-semibold tracking-widest text-gray-200 uppercase rotate-90 whitespace-nowrap my-5">
             Honors
           </span>
         </div>
@@ -415,7 +415,7 @@ export default function Home() {
         </div>
 
         {/* Middle Hero Container (Left Info, Center Portrait, Right Socials) */}
-        <div className="w-full max-w-7xl mx-auto px-6 -mt-16 sm:-mt-20 md:-mt-24 relative z-30 pb-16 sm:pb-24">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 -mt-16 sm:-mt-20 md:-mt-24 relative z-30 pb-16 sm:pb-24">
           <div className="grid grid-cols-1 md:grid-cols-12 items-end gap-6 md:gap-0">
             
             {/* Left Info Column */}
@@ -423,27 +423,29 @@ export default function Home() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="md:col-span-3 flex flex-col items-start pb-4 md:pb-8"
+              className="md:col-span-3 pb-4 md:pb-8"
             >
-              <FiArrowDownRight className="w-5 h-5 text-black mb-4 shrink-0" strokeWidth={1.75} />
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-normal tracking-normal text-black leading-[1.35] uppercase ml-2 sm:ml-3 flex flex-col items-start">
-                <a href="https://lathishop.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500 transition-colors">FREELANCE</a>
-                <a href="https://fuudr.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500 transition-colors">PRODUCT</a>
-                <span>EDITOR</span>
-              </h3>
-              <div className="flex items-center gap-2 mt-1.5 ml-8 w-fit">
-                <motion.span
-                  className="w-2 h-2 rounded-full bg-[#22c55e] shrink-0"
-                  animate={{ opacity: [1, 0.15, 1], boxShadow: ['0 0 2px rgba(34,197,94,0.5)', '0 0 14px rgba(34,197,94,1)', '0 0 2px rgba(34,197,94,0.5)'] }}
-                  transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
-                />
-                <span className="text-sm sm:text-base font-normal text-black">Open to work</span>
+              {/* Static wrapper to apply mobile translation without Framer Motion transform conflicts */}
+              <div className="-translate-y-24 md:translate-y-0 flex flex-col items-start">
+                <FiArrowDownRight className="w-5 h-5 text-black mb-4 shrink-0" strokeWidth={1.75} />
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-normal tracking-normal text-black leading-[1.35] uppercase ml-2 sm:ml-3 flex flex-col items-start">
+                  <a href="https://lathishop.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500 transition-colors">FREELANCE</a>
+                  <a href="https://fuudr.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500 transition-colors">PRODUCT MAKER</a>
+                  <span>EDITOR</span>
+                </h3>
+                <div className="flex items-center gap-2.5 mt-2 ml-8 w-fit">
+                  <motion.span
+                    className="w-3 h-3 rounded-full bg-[#22c55e] shrink-0"
+                    animate={{ opacity: [1, 0.15, 1], boxShadow: ['0 0 3px rgba(34,197,94,0.5)', '0 0 16px rgba(34,197,94,1)', '0 0 3px rgba(34,197,94,0.5)'] }}
+                    transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+                  />
+                  <span className="text-base sm:text-lg font-normal text-black">Open to work</span>
+                </div>
               </div>
             </motion.div>
 
-            {/* Center Column: Tight Close-up Portrait */}
             <div className="md:col-span-6 flex justify-center relative items-end px-2">
-              <div className="relative flex justify-center items-end max-w-[280px] sm:max-w-[360px] md:max-w-[440px] mx-auto">
+              <div className="relative flex justify-center items-end w-[94vw] max-w-[350px] sm:w-auto sm:max-w-[360px] md:max-w-[440px] mx-auto -translate-y-5 sm:translate-y-0">
                 
                 {/* Main Portrait */}
                 <motion.img
@@ -452,7 +454,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 180 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.0, duration: 2.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full object-contain relative -z-10 select-none max-h-[360px] sm:max-h-[440px] md:max-h-[490px] translate-y-8 sm:translate-y-12 md:translate-y-16 scale-105"
+                  className="w-full object-contain relative -z-10 select-none max-h-[360px] sm:max-h-[440px] md:max-h-[490px] translate-y-8 sm:translate-y-12 md:translate-y-16 scale-110 sm:scale-105"
                 />
               </div>
             </div>
@@ -462,7 +464,7 @@ export default function Home() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.7 }}
-              className="md:col-span-3 flex items-center justify-end pb-4 md:pb-8 gap-6 sm:gap-8 pr-8 sm:pr-14 md:pr-20"
+              className="absolute md:relative right-4 sm:right-10 top-[38%] md:top-auto md:col-span-3 flex items-center justify-end pb-4 md:pb-8 gap-6 sm:gap-8 pr-0 md:pr-20 z-40"
             >
               {/* Thick Hand-drawn Chalky Crown Doodle Icon — Floating Animation */}
               <motion.svg
@@ -486,7 +488,7 @@ export default function Home() {
               </motion.svg>
 
               {/* Stacked Circular Social Buttons */}
-              <div className="flex flex-col items-center gap-2.5">
+              <div className="hidden md:flex flex-col items-center gap-2.5">
                 <a
                   href="https://instagram.com/ai.bykshitij"
                   target="_blank"
@@ -524,7 +526,7 @@ export default function Home() {
 
       {/* ── Black Statement Section with Arched Curved Bottom ── */}
       <section
-        className="w-full min-h-[135vh] bg-black text-white pb-36 sm:pb-52 relative z-20 flex flex-col items-center justify-start text-center overflow-x-clip -mt-10 sm:-mt-12"
+        className="w-full min-h-[70vh] sm:min-h-[135vh] bg-black text-white pb-36 sm:pb-52 relative z-20 flex flex-col items-center justify-start text-center overflow-x-clip -mt-10 sm:-mt-12"
         style={{
           borderBottomLeftRadius: '50% 120px',
           borderBottomRightRadius: '50% 120px'
@@ -534,7 +536,7 @@ export default function Home() {
         <div className="w-full relative z-30">
           <TickerBar />
           {/* Left & Right Hands gripping the top edge */}
-          <div className="max-w-[440px] mx-auto relative flex justify-between pointer-events-none">
+          <div className="max-w-[440px] mx-auto relative hidden sm:flex justify-between pointer-events-none">
             <motion.img
               src={handLeftImg}
               alt=""
@@ -554,7 +556,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="pt-32 sm:pt-44 md:pt-52 px-4 sm:px-8 w-full">
+        <div className="flex-1 w-full flex items-center justify-center py-12 sm:py-0 sm:pt-44 md:pt-52 px-4 sm:px-8">
           <ScrollRevealText />
         </div>
       </section>
@@ -784,18 +786,6 @@ export default function Home() {
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 sm:p-6 md:p-10 cursor-zoom-out"
             onClick={() => setIsHonorsOpen(false)}
           >
-            {/* Close button on the top right */}
-            <motion.button
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ delay: 0.15 }}
-              onClick={() => setIsHonorsOpen(false)}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white hover:text-[#b8f500] bg-white/10 hover:bg-white/20 p-2 sm:p-3 rounded-full transition-all duration-200 backdrop-blur-xs cursor-pointer border border-white/10"
-            >
-              <FiX className="w-5 h-5 sm:w-6 sm:h-6" />
-            </motion.button>
-
             {/* Modal Body */}
             <motion.div
               initial={{ scale: 0.9, opacity: 0, y: 30 }}
