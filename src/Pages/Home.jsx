@@ -54,9 +54,9 @@ function ScrollRevealText() {
   });
 
   const lines = [
-    ["combining", "user", "insights,"],
-    ["design", "expertise"],
-    ["and", "market", "trends."]
+    ["creating", "experiences", "at", "the"],
+    ["intersection", "of", "technology,"],
+    ["design,", "and", "human", "behavior."]
   ];
 
   const fontStyle = {
@@ -64,13 +64,15 @@ function ScrollRevealText() {
     fontWeight: 700
   };
 
+  let wordIndexCount = 0;
+
   return (
-    <div ref={containerRef} className="w-full max-w-6xl mx-auto px-4 flex flex-col items-center justify-center gap-4 sm:gap-6">
+    <div ref={containerRef} className="w-full max-w-6xl mx-auto px-4 flex flex-col items-center justify-center gap-1 sm:gap-2.5">
       {lines.map((words, lineIdx) => (
         <div key={lineIdx} className="flex flex-wrap justify-center items-center gap-3 sm:gap-6">
           {words.map((word, wordIdx) => {
-            const totalIndex = lineIdx * 3 + wordIdx;
-            const startProgress = totalIndex * 0.09;
+            const totalIndex = wordIndexCount++;
+            const startProgress = totalIndex * 0.07;
             const endProgress = startProgress + 0.22;
 
             const opacity = useTransform(scrollYProgress, [startProgress, endProgress], [0.08, 1]);
@@ -92,7 +94,7 @@ function ScrollRevealText() {
                   filter,
                   ...fontStyle
                 }}
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white select-none inline-block drop-shadow-[0_0_18px_rgba(255,255,255,0.25)]"
+                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white select-none inline-block leading-[1.05] drop-shadow-[0_0_18px_rgba(255,255,255,0.25)]"
               >
                 {word}
               </motion.span>
@@ -130,22 +132,25 @@ function KeyFiguresSection() {
         <div className="lg:col-span-7 flex justify-center w-full">
           <div className="w-full max-w-[660px] aspect-[4/3] min-h-[440px] sm:min-h-[500px] rounded-[44px] border border-black/40 bg-white relative p-6 sm:p-10 overflow-hidden shadow-xs">
             
-            {/* Stat 1: 60+ (Circle) + USER INTERVIEWS (Blue Vertical Pill) */}
+            {/* Stat 1: 60+ (Circle) + USERS ON PRODUCT (Blue Sticker) */}
             <motion.div
-              className="absolute left-[5%] top-[8%] flex items-center justify-center"
+              className="absolute left-[5%] top-[8%]"
               whileHover={{ scale: 1.05, rotate: 2 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
-              <div className="w-36 h-36 sm:w-48 sm:h-48 rounded-full border border-black flex items-center justify-center relative">
+              <div className="w-36 h-36 sm:w-48 sm:h-48 rounded-full border border-black flex flex-col items-center justify-center relative bg-white px-2 text-center">
                 <span
-                  className="text-4xl sm:text-6xl font-normal text-black rotate-[-90deg] inline-block tracking-tight"
+                  className="text-4xl sm:text-6xl font-normal text-black tracking-tight"
                   style={{ fontFamily: '"Playfair Display", "DM Serif Display", Georgia, serif' }}
                 >
                   60+
                 </span>
-                {/* Vertical Blue Pill Badge */}
-                <span className="absolute right-[-16px] top-1/2 -translate-y-1/2 bg-[#8da8f6] text-black text-[10px] sm:text-xs font-black uppercase tracking-wider px-2 py-1 rounded-sm rotate-90 whitespace-nowrap shadow-xs border border-black/10">
-                  USER INTERVIEWS
+                <span className="text-[10px] sm:text-xs font-semibold text-gray-500 tracking-tight mt-1">
+                  autoslay.online
+                </span>
+                {/* Blue Slanted Badge */}
+                <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#8da8f6] text-black text-[10px] sm:text-xs font-black uppercase tracking-wider px-3 py-0.5 rounded-sm rotate-[-4deg] whitespace-nowrap shadow-xs border border-black/10">
+                  USERS ON PRODUCT
                 </span>
               </div>
             </motion.div>
@@ -156,12 +161,15 @@ function KeyFiguresSection() {
               whileHover={{ scale: 1.05, rotate: -2 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
-              <div className="border border-black rounded-[60px] px-8 sm:px-12 py-5 sm:py-7 flex flex-col items-center justify-center relative bg-white">
+              <div className="border border-black rounded-[60px] px-8 sm:px-12 py-5 sm:py-7 flex flex-col items-center justify-center relative bg-white px-4 text-center">
                 <span
                   className="text-4xl sm:text-6xl font-normal text-black tracking-tight"
                   style={{ fontFamily: '"Playfair Display", "DM Serif Display", Georgia, serif' }}
                 >
                   45+
+                </span>
+                <span className="text-[10px] sm:text-xs font-semibold text-gray-500 tracking-tight mt-1">
+                  fuudr.com
                 </span>
                 {/* Coral Red Slanted Badge */}
                 <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#ff6747] text-black text-[10px] sm:text-xs font-black uppercase tracking-wider px-3 py-0.5 rounded-sm rotate-[5deg] whitespace-nowrap shadow-xs border border-black/10">
@@ -170,9 +178,9 @@ function KeyFiguresSection() {
               </div>
             </motion.div>
 
-            {/* Stat 3: 82 (Scalloped Hourglass Box) + AVERAGE SUS (Lime Green Sticker) */}
+            {/* Stat 3: 100% (Scalloped Hourglass Box) + SATISFACTION (Lime Green Sticker) */}
             <motion.div
-              className="absolute right-[22%] top-[42%]"
+              className="absolute right-[10%] bottom-[12%]"
               whileHover={{ scale: 1.05 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
@@ -181,42 +189,48 @@ function KeyFiguresSection() {
                   className="text-4xl sm:text-6xl font-normal text-black tracking-tight"
                   style={{ fontFamily: '"Playfair Display", "DM Serif Display", Georgia, serif' }}
                 >
-                  82
+                  100%
                 </span>
                 {/* Lime Green Slanted Badge */}
                 <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#b8f500] text-black text-[10px] sm:text-xs font-black uppercase tracking-wider px-3 py-0.5 rounded-sm rotate-[-3deg] whitespace-nowrap shadow-xs border border-black/10">
-                  AVERAGE SUS
+                  SATISFACTION
                 </span>
               </div>
             </motion.div>
 
-            {/* Stat 4: 5 (Triangle) + YEARS EXPERIENCE (Purple Lavender Sticker) */}
+            {/* Stat 4: Web/App (Pill) + SERVICES (Lavender Sticker) */}
             <motion.div
-              className="absolute left-[18%] bottom-[5%]"
-              whileHover={{ scale: 1.05 }}
+              className="absolute left-[36%] top-[34%]"
+              whileHover={{ scale: 1.05, rotate: -2 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
-              <div className="relative flex flex-col items-center justify-center">
-                {/* Equilateral Triangle SVG */}
-                <svg className="w-36 h-36 sm:w-48 sm:h-48 text-black stroke-[1.25]" viewBox="0 0 100 100" fill="none" stroke="currentColor">
-                  <polygon points="50,10 90,90 10,90" strokeLinejoin="round" />
-                </svg>
+              <div className="border border-black rounded-[40px] px-8 sm:px-10 py-5 sm:py-6 flex flex-col items-center justify-center relative bg-white">
                 <span
-                  className="absolute bottom-7 text-4xl sm:text-6xl font-normal text-black tracking-tight"
+                  className="text-3xl sm:text-5xl font-normal text-black tracking-tight"
                   style={{ fontFamily: '"Playfair Display", "DM Serif Display", Georgia, serif' }}
                 >
-                  5
+                  Web/App
                 </span>
                 {/* Lavender Slanted Badge */}
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#e2b0ff] text-black text-[10px] sm:text-xs font-black uppercase tracking-wider px-3 py-0.5 rounded-sm rotate-[-4deg] whitespace-nowrap shadow-xs border border-black/10">
-                  YEARS EXPERIENCE
+                <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#e2b0ff] text-black text-[10px] sm:text-xs font-black uppercase tracking-wider px-3 py-0.5 rounded-sm rotate-[3deg] whitespace-nowrap shadow-xs border border-black/10">
+                  SERVICES
                 </span>
               </div>
             </motion.div>
+
+            {/* Doodle Arrow pointing from Web/App to 100% Satisfaction */}
+            <div className="absolute left-[48%] top-[51%] w-[130px] h-[90px] pointer-events-none z-10 hidden sm:block">
+              <svg className="w-full h-full text-black/35 select-none" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                {/* Curved line starting at top-left, going to bottom-right */}
+                <path d="M 20 10 C 55 25, 45 65, 85 85" />
+                {/* Arrowhead at the bottom-right */}
+                <path d="M 68 85 L 85 85 L 80 68" />
+              </svg>
+            </div>
 
             {/* Stat 5: 10+ (Hexagon) + PROJECTS FINISHED (Yellow Sticker) */}
             <motion.div
-              className="absolute right-[10%] bottom-[5%]"
+              className="absolute left-[8%] bottom-[6%]"
               whileHover={{ scale: 1.05 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
@@ -225,12 +239,17 @@ function KeyFiguresSection() {
                 <svg className="w-36 h-36 sm:w-48 sm:h-48 text-black stroke-[1.25]" viewBox="0 0 100 100" fill="none" stroke="currentColor">
                   <polygon points="50,5 90,27 90,73 50,95 10,73 10,27" strokeLinejoin="round" />
                 </svg>
-                <span
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl sm:text-5xl font-normal text-black tracking-tight"
-                  style={{ fontFamily: '"Playfair Display", "DM Serif Display", Georgia, serif' }}
-                >
-                  10+
-                </span>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center w-full px-4 text-center">
+                  <span
+                    className="text-3xl sm:text-5xl font-normal text-black tracking-tight"
+                    style={{ fontFamily: '"Playfair Display", "DM Serif Display", Georgia, serif' }}
+                  >
+                    10+
+                  </span>
+                  <span className="text-[7.5px] sm:text-[10px] font-semibold text-gray-500 tracking-tight leading-tight mt-0.5 sm:mt-1 max-w-[80px] sm:max-w-[110px] break-words">
+                    linkarua, lathishop &amp; more
+                  </span>
+                </div>
                 {/* Yellow Slanted Badge */}
                 <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#ffea00] text-black text-[10px] sm:text-xs font-black uppercase tracking-wider px-3 py-0.5 rounded-sm rotate-[4deg] whitespace-nowrap shadow-xs border border-black/10">
                   PROJECTS FINISHED
@@ -407,10 +426,10 @@ export default function Home() {
               className="md:col-span-3 flex flex-col items-start pb-4 md:pb-8"
             >
               <FiArrowDownRight className="w-5 h-5 text-black mb-4 shrink-0" strokeWidth={1.75} />
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-normal tracking-normal text-black leading-[1.35] uppercase ml-2 sm:ml-3">
-                FREELANCE<br />
-                PRODUCT<br />
-                EDITOR
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-normal tracking-normal text-black leading-[1.35] uppercase ml-2 sm:ml-3 flex flex-col items-start">
+                <a href="https://lathishop.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500 transition-colors">FREELANCE</a>
+                <a href="https://fuudr.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500 transition-colors">PRODUCT</a>
+                <span>EDITOR</span>
               </h3>
               <div className="flex items-center gap-2 mt-1.5 ml-8 w-fit">
                 <motion.span
@@ -469,7 +488,7 @@ export default function Home() {
               {/* Stacked Circular Social Buttons */}
               <div className="flex flex-col items-center gap-2.5">
                 <a
-                  href="https://instagram.com"
+                  href="https://instagram.com/ai.bykshitij"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-gray-200/90 flex items-center justify-center text-black hover:border-black hover:bg-black hover:text-white transition-all duration-200 shadow-xs"

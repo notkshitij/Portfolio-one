@@ -10,7 +10,7 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { label: 'Instagram', href: 'https://instagram.com' },
+  { label: 'Instagram', href: 'https://instagram.com/ai.bykshitij' },
   { label: 'Linkedin', href: 'https://www.linkedin.com/in/kshitijjain-dev/' },
   { label: 'Twitter', href: 'https://x.com/k_shit_jain' },
   { label: 'Github', href: 'https://github.com/NEGO2522' },
@@ -120,7 +120,7 @@ const Footer = () => {
 
         {/* Copyright Text */}
         <p className="text-[10px] md:text-xs font-semibold tracking-widest uppercase text-black/80 mt-4 pointer-events-auto z-10">
-          ©2026 KSHITIJ SOFTWARE FORGE. ALL RIGHTS RESERVED
+          ©2026 THE SOLVERS. ALL RIGHTS RESERVED
         </p>
       </div>
 
