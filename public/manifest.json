@@ -1,0 +1,21 @@
+{
+  "short_name": "kshitij",
+  "name": "kshitij",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#f4f2ec",
+  "theme_color": "#b8f500",
+  "display": "standalone",
+  "orientation": "portrait"
+}
