@@ -27,8 +27,4 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-@media (pointer: fine) {
-  *, body, html, a, button, input, select, textarea {
-    cursor: none !important;
-  }
-}
+
