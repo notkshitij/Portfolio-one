@@ -38,7 +38,7 @@ const Footer = () => {
         {/* Right CTA Button */}
         <motion.a
           href="mailto:borbreak@gmail.com"
-          className="inline-flex items-center gap-2 border border-black rounded-full px-6 py-3 text-sm font-semibold text-black hover:bg-black hover:text-[#b8f500] transition-colors duration-200 shrink-0"
+          className="inline-flex items-center gap-2 border border-black rounded-full px-6 py-3 text-sm font-semibold text-black hover:bg-black hover:text-[#b8f500] transition-colors duration-500 ease-in-out shrink-0"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.96 }}
         >
