@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import Lenis from "lenis";
 import Navbar from "./Components/Navbar";
 import SplashScreen from "./Components/SplashScreen";
 
@@ -33,8 +34,62 @@ function App() {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
-    // Force scroll to top on reload or page change
     window.scrollTo(0, 0);
+
+    // Initialize Lenis smooth scroll
+    const lenis = new Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.25,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    lenis.scrollTo(0, { immediate: true });
+
+    return () => {
+      lenis.destroy();
+    };
+  }, [location.pathname]);
+
+  useEffect(() => {
+    // Dynamic Scrollbar Color Observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const thumb = entry.target.getAttribute("data-scrollbar-thumb");
+            const track = entry.target.getAttribute("data-scrollbar-track");
+            if (thumb) {
+              document.documentElement.style.setProperty("--scrollbar-thumb-color", thumb);
+            }
+            if (track) {
+              document.documentElement.style.setProperty("--scrollbar-track-color", track);
+            }
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.3,
+      }
+    );
+
+    // Observe all elements with custom data-scrollbar-thumb attributes
+    const targets = document.querySelectorAll("[data-scrollbar-thumb]");
+    targets.forEach((target) => observer.observe(target));
+
+    return () => {
+      targets.forEach((target) => observer.unobserve(target));
+      observer.disconnect();
+    };
   }, [location.pathname]);
 
   useEffect(() => {

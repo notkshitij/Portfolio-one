@@ -110,7 +110,11 @@ function ScrollRevealText() {
 /* ─── KeyFiguresSection ─────────────────────────────────────────────────── */
 function KeyFiguresSection() {
   return (
-    <section className="w-full bg-white text-black px-6 sm:px-12 md:px-24 py-24 sm:py-36 relative z-20 overflow-hidden">
+    <section 
+      data-scrollbar-thumb="#000000" 
+      data-scrollbar-track="#ffffff"
+      className="w-full bg-white text-black px-6 sm:px-12 md:px-24 py-24 sm:py-36 relative z-20 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         
         {/* Left Column: Display Serif Heading + Eyes */}
@@ -371,7 +375,9 @@ export default function Home() {
       {/* ── Hero Section (Matches Reference Design Exactly) ──────────────── */}
       <section
         id="hero"
-        className={`w-full min-h-screen sm:sticky top-0 z-10 bg-white pt-16 sm:pt-20 md:pt-24 flex flex-col justify-between overflow-hidden transition-opacity duration-300 ${
+        data-scrollbar-thumb="#000000"
+        data-scrollbar-track="#ffffff"
+        className={`w-full min-h-screen sticky top-0 z-10 bg-white pt-16 sm:pt-20 md:pt-24 flex flex-col justify-between overflow-hidden transition-opacity duration-300 ${
           isPastHero ? 'opacity-0 pointer-events-none invisible' : 'opacity-100'
         }`}
       >
@@ -428,11 +434,11 @@ export default function Home() {
               className="md:col-span-3 pb-4 md:pb-8"
             >
               {/* Static wrapper to apply mobile translation without Framer Motion transform conflicts */}
-              <div className="-translate-y-36 md:-translate-y-16 flex flex-col items-start">
+              <div className="-translate-y-20 md:-translate-y-16 flex flex-col items-start">
                 <FiArrowDownRight className="w-5 h-5 text-black mb-4 shrink-0" strokeWidth={1.75} />
                 <h3 className="text-lg sm:text-xl md:text-2xl font-normal tracking-normal text-black leading-[1.35] uppercase ml-2 sm:ml-3 flex flex-col items-start">
                   <a href="https://lathishop.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500 transition-colors">FREELANCE</a>
-                  <a href="https://fuudr.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500 transition-colors">PRODUCT MAKER</a>
+                  <a href="https://fuudr.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500 transition-colors">PRODUCT BUILDER</a>
                   <span>EDITOR</span>
                 </h3>
                 <div className="flex items-center gap-2.5 mt-2 ml-8 w-fit">
@@ -466,7 +472,7 @@ export default function Home() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.7 }}
-              className="absolute md:relative right-4 sm:right-10 top-[28%] md:top-auto md:col-span-3 flex items-center justify-end pb-4 md:pb-24 gap-6 sm:gap-8 pr-0 md:pr-20 z-40"
+              className="absolute md:relative right-4 sm:right-10 top-[36%] md:top-auto md:col-span-3 flex items-center justify-end pb-4 md:pb-24 gap-6 sm:gap-8 pr-0 md:pr-20 z-40"
             >
               {/* Thick Hand-drawn Chalky Crown Doodle Icon — Floating Animation */}
               <motion.svg
@@ -528,6 +534,8 @@ export default function Home() {
 
       {/* ── Black Statement Section with Arched Curved Bottom ── */}
       <section
+        data-scrollbar-thumb="#b8f500"
+        data-scrollbar-track="#000000"
         className="w-full min-h-[70vh] sm:min-h-[135vh] bg-black text-white pb-36 sm:pb-52 relative z-20 flex flex-col items-center justify-start text-center overflow-x-clip -mt-10 sm:-mt-12"
         style={{
           borderBottomLeftRadius: '50% 15%',
@@ -538,14 +546,14 @@ export default function Home() {
         <div className="w-full relative z-30">
           <TickerBar />
           {/* Left & Right Hands gripping the top edge */}
-          <div className="max-w-[440px] mx-auto relative hidden sm:flex justify-between pointer-events-none">
+          <div className="max-w-[280px] sm:max-w-[440px] mx-auto relative flex justify-between pointer-events-none">
             <motion.img
               src={handLeftImg}
               alt=""
               initial={{ opacity: 0, scale: 0.8, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute left-[-120px] sm:left-[-180px] md:left-[-240px] lg:left-[-300px] -top-18 sm:-top-22 md:-top-27 z-50 w-[150px] sm:w-[200px] md:w-[250px] lg:w-[270px] object-contain select-none drop-shadow-lg [filter:sepia(45%)_saturate(180%)_hue-rotate(-8deg)_brightness(0.82)_contrast(1.05)]"
+              className="absolute left-[-55px] sm:left-[-180px] md:left-[-240px] lg:left-[-300px] -top-9 sm:-top-22 md:-top-27 z-50 w-[85px] sm:w-[200px] md:w-[250px] lg:w-[270px] object-contain select-none drop-shadow-lg [filter:sepia(45%)_saturate(180%)_hue-rotate(-8deg)_brightness(0.82)_contrast(1.05)]"
             />
             <motion.img
               src={handRightImg}
@@ -553,7 +561,7 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.8, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute right-[-120px] sm:right-[-180px] md:right-[-240px] lg:right-[-300px] -top-18 sm:-top-22 md:-top-27 z-50 w-[150px] sm:w-[200px] md:w-[250px] lg:w-[270px] object-contain select-none drop-shadow-lg [filter:sepia(45%)_saturate(180%)_hue-rotate(-8deg)_brightness(0.82)_contrast(1.05)]"
+              className="absolute right-[-55px] sm:right-[-180px] md:right-[-240px] lg:right-[-300px] -top-9 sm:-top-22 md:-top-27 z-50 w-[85px] sm:w-[200px] md:w-[250px] lg:w-[270px] object-contain select-none drop-shadow-lg [filter:sepia(45%)_saturate(180%)_hue-rotate(-8deg)_brightness(0.82)_contrast(1.05)]"
             />
           </div>
         </div>
@@ -564,7 +572,12 @@ export default function Home() {
       </section>
 
       {/* ── Recent Work Section (Exact Replica of Reference Design) ── */}
-      <section id="work" className="w-full bg-[#f4f2ec] text-black px-6 sm:px-12 md:px-24 pt-16 sm:pt-24 pb-24 relative z-20">
+      <section 
+        id="work" 
+        data-scrollbar-thumb="#000000"
+        data-scrollbar-track="#f4f2ec"
+        className="w-full bg-[#f4f2ec] text-black px-6 sm:px-12 md:px-24 pt-16 sm:pt-24 pb-24 relative z-20"
+      >
         <div className="max-w-4xl mx-auto flex flex-col items-start gap-8 sm:gap-12">
           
           {/* Section Sub-heading */}
@@ -645,7 +658,7 @@ export default function Home() {
 
       <Divider />
 
-      <section id="about" className="py-16 sm:py-20 md:py-28 px-5 sm:px-8 lg:px-14 bg-white overflow-hidden">
+      <section id="about" data-scrollbar-thumb="#000000" data-scrollbar-track="#ffffff" className="py-16 sm:py-20 md:py-28 px-5 sm:px-8 lg:px-14 bg-white overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
 
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-14">
@@ -734,11 +747,13 @@ export default function Home() {
 
       <Divider />
 
-      <Testimonials />
+      <section data-scrollbar-thumb="#000000" data-scrollbar-track="#ffffff" className="py-16 sm:py-20 md:py-28 px-5 sm:px-8 lg:px-14 bg-white">
+        <Testimonials />
+      </section>
 
       <Divider />
 
-      <section className="py-16 sm:py-20 md:py-28 px-5 sm:px-8 lg:px-14 bg-white">
+      <section data-scrollbar-thumb="#000000" data-scrollbar-track="#ffffff" className="py-16 sm:py-20 md:py-28 px-5 sm:px-8 lg:px-14 bg-white">
         <div className="max-w-[1600px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 sm:gap-14">
             
@@ -861,7 +876,7 @@ function Projects() {
   ];
 
   return (
-    <section id="work" className="py-16 sm:py-20 md:py-28 px-5 sm:px-8 lg:px-14 bg-white">
+    <section id="work" data-scrollbar-thumb="#000000" data-scrollbar-track="#ffffff" className="py-16 sm:py-20 md:py-28 px-5 sm:px-8 lg:px-14 bg-white">
       <div className="max-w-[1600px] mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-14">
           <div>

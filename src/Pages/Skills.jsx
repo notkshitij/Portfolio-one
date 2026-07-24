@@ -37,7 +37,11 @@ export function Skills() {
   const duplicatedSkills = [...skills, ...skills];
 
   return (
-    <section className="w-full bg-white overflow-hidden py-4">
+    <section 
+      data-scrollbar-thumb="#000000"
+      data-scrollbar-track="#ffffff"
+      className="w-full bg-white overflow-hidden py-4"
+    >
       <div className="w-full">
         {/* Skills Marquee — full width */}
         <div className="overflow-hidden w-full">

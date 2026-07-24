@@ -48,7 +48,12 @@ export default function About() {
   ];
 
   return (
-    <div className="text-black bg-[#f4f2ec] overflow-x-clip min-h-screen pt-24 sm:pt-28 font-sans select-none flex flex-col justify-between" style={FONT}>
+    <div 
+      data-scrollbar-thumb="#000000"
+      data-scrollbar-track="#f4f2ec"
+      className="text-black bg-[#f4f2ec] overflow-x-clip min-h-screen pt-24 sm:pt-28 font-sans select-none flex flex-col justify-between" 
+      style={FONT}
+    >
       <motion.div 
         className="max-w-7xl mx-auto px-6 md:px-12 w-full flex-grow pb-24"
         variants={containerVariants}

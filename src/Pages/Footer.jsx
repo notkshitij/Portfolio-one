@@ -18,7 +18,12 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer id="contact" className="w-full min-h-[70vh] bg-[#b8f500] text-black relative overflow-hidden pt-8 sm:pt-12 pb-5 flex flex-col justify-between font-sans select-none">
+    <footer 
+      id="contact" 
+      data-scrollbar-thumb="#000000"
+      data-scrollbar-track="#b8f500"
+      className="w-full min-h-[70vh] bg-[#b8f500] text-black relative overflow-hidden pt-8 sm:pt-12 pb-5 flex flex-col justify-between font-sans select-none"
+    >
       
       {/* ── Top CTA Row ─────────────────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 w-full">

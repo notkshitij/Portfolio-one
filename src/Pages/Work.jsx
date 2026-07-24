@@ -635,7 +635,12 @@ export default function Work() {
   const hasMatches = filteredAll.length > 0;
 
   return (
-    <div className="text-black bg-[#f4f2ec] overflow-x-clip min-h-screen pt-24 sm:pt-28 font-sans select-none flex flex-col justify-between relative" style={FONT}>
+    <div 
+      data-scrollbar-thumb="#b8f500"
+      data-scrollbar-track="#f4f2ec"
+      className="text-black bg-[#f4f2ec] overflow-x-clip min-h-screen pt-24 sm:pt-28 font-sans select-none flex flex-col justify-between relative" 
+      style={FONT}
+    >
       
       {/* Soft window blinds light shadow */}
       <div className="absolute inset-0 pointer-events-none z-40 select-none overflow-hidden">
