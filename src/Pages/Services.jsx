@@ -86,7 +86,7 @@ export function Services() {
             href="https://www.linkedin.com/in/kshitijjain-dev/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group self-start sm:self-auto inline-flex items-center gap-2 px-5 py-2.5 border border-white/15 text-white/70 hover:text-white hover:border-white text-sm font-semibold rounded-full transition-all"
+            className="group self-start sm:self-auto inline-flex items-center gap-2 px-5 py-2.5 border border-white/15 text-white/70 hover:text-white hover:border-white text-sm font-semibold rounded-full transition-all duration-500 ease-in-out"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
           >
@@ -205,7 +205,7 @@ export function Services() {
               href="https://www.linkedin.com/in/kshitijjain-dev/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 bg-white text-black px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-bold text-sm hover:bg-gray-100 transition-colors shadow-[0_8px_32px_rgba(255,255,255,0.12)] active:scale-95"
+              className="group inline-flex items-center gap-2.5 bg-white text-black px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-bold text-sm hover:bg-gray-100 transition-colors duration-500 ease-in-out shadow-[0_8px_32px_rgba(255,255,255,0.12)] active:scale-95"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
             >
