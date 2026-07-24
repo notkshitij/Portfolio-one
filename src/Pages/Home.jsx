@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import {
   FiGithub, FiLinkedin, FiMail,
@@ -7,7 +8,7 @@ import {
   FiArrowDownLeft, FiArrowDownRight, FiInstagram
 } from 'react-icons/fi';
 import { FaDiscord } from 'react-icons/fa';
-import profileImage from '../assets/img.png';
+import profileImage from '../assets/img1.jpeg';
 import portraitImg from '../assets/kshitij_portrait.png';
 import handLeftImg from '../assets/hand_left.png';
 import handRightImg from '../assets/hand_right.png';
@@ -67,7 +68,7 @@ function ScrollRevealText() {
   let wordIndexCount = 0;
 
   return (
-    <div ref={containerRef} className="w-full max-w-6xl mx-auto px-4 flex flex-col items-center justify-center gap-1 sm:gap-2.5">
+    <div ref={containerRef} className="w-full max-w-6xl mx-auto px-4 flex flex-col items-center justify-center gap-0">
       {lines.map((words, lineIdx) => (
         <div key={lineIdx} className="flex flex-wrap justify-center items-center gap-3 sm:gap-6">
           {words.map((word, wordIdx) => {
@@ -94,7 +95,7 @@ function ScrollRevealText() {
                   filter,
                   ...fontStyle
                 }}
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white select-none inline-block leading-[1.05] drop-shadow-[0_0_18px_rgba(255,255,255,0.25)]"
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-white select-none inline-block leading-[1.05] drop-shadow-[0_0_18px_rgba(255,255,255,0.25)]"
               >
                 {word}
               </motion.span>
@@ -297,6 +298,7 @@ function Divider() {
 
 /* ─── Home ──────────────────────────────────────────────────────────────── */
 export default function Home() {
+  const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState(0);
   const [isPastHero, setIsPastHero] = useState(false);
   const [isHonorsOpen, setIsHonorsOpen] = useState(false);
@@ -377,7 +379,7 @@ export default function Home() {
         {/* Floating Right Badge: P. Honors (Scoped to Hero Section) */}
         <div 
           onClick={() => setIsHonorsOpen(true)}
-          className="absolute right-0 top-[45%] sm:top-[65%] -translate-y-1/2 z-40 flex flex-col items-center bg-black text-white py-2 sm:py-4 px-2 w-8 sm:w-10 rounded-none shadow-2xl border-l border-t border-b border-gray-800 select-none cursor-pointer hover:bg-gray-900 transition-colors"
+          className="absolute right-0 top-[45%] sm:top-[65%] -translate-y-1/2 z-40 flex flex-col items-center bg-black text-white py-2 sm:py-4 px-2 w-8 sm:w-10 rounded-none shadow-2xl border-l border-t border-b border-gray-800 select-none cursor-pointer hover:bg-gray-900 transition-colors duration-500 ease-in-out"
         >
           <span className="text-xl font-black tracking-tight text-white mb-0 sm:mb-4 font-sans">
             P.
@@ -426,20 +428,20 @@ export default function Home() {
               className="md:col-span-3 pb-4 md:pb-8"
             >
               {/* Static wrapper to apply mobile translation without Framer Motion transform conflicts */}
-              <div className="-translate-y-24 md:translate-y-0 flex flex-col items-start">
+              <div className="-translate-y-36 md:-translate-y-16 flex flex-col items-start">
                 <FiArrowDownRight className="w-5 h-5 text-black mb-4 shrink-0" strokeWidth={1.75} />
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-normal tracking-normal text-black leading-[1.35] uppercase ml-2 sm:ml-3 flex flex-col items-start">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-normal tracking-normal text-black leading-[1.35] uppercase ml-2 sm:ml-3 flex flex-col items-start">
                   <a href="https://lathishop.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500 transition-colors">FREELANCE</a>
                   <a href="https://fuudr.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500 transition-colors">PRODUCT MAKER</a>
                   <span>EDITOR</span>
                 </h3>
                 <div className="flex items-center gap-2.5 mt-2 ml-8 w-fit">
                   <motion.span
-                    className="w-3 h-3 rounded-full bg-[#22c55e] shrink-0"
+                    className="w-2.5 h-2.5 rounded-full bg-[#22c55e] shrink-0"
                     animate={{ opacity: [1, 0.15, 1], boxShadow: ['0 0 3px rgba(34,197,94,0.5)', '0 0 16px rgba(34,197,94,1)', '0 0 3px rgba(34,197,94,0.5)'] }}
                     transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
                   />
-                  <span className="text-base sm:text-lg font-normal text-black">Open to work</span>
+                  <span className="text-sm sm:text-base font-normal text-black">Open to work</span>
                 </div>
               </div>
             </motion.div>
@@ -464,7 +466,7 @@ export default function Home() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.7 }}
-              className="absolute md:relative right-4 sm:right-10 top-[38%] md:top-auto md:col-span-3 flex items-center justify-end pb-4 md:pb-8 gap-6 sm:gap-8 pr-0 md:pr-20 z-40"
+              className="absolute md:relative right-4 sm:right-10 top-[28%] md:top-auto md:col-span-3 flex items-center justify-end pb-4 md:pb-24 gap-6 sm:gap-8 pr-0 md:pr-20 z-40"
             >
               {/* Thick Hand-drawn Chalky Crown Doodle Icon — Floating Animation */}
               <motion.svg
@@ -493,7 +495,7 @@ export default function Home() {
                   href="https://instagram.com/ai.bykshitij"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-gray-200/90 flex items-center justify-center text-black hover:border-black hover:bg-black hover:text-white transition-all duration-200 shadow-xs"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-gray-200/90 flex items-center justify-center text-black hover:border-black hover:bg-black hover:text-white transition-all duration-500 ease-in-out shadow-xs"
                   title="Instagram"
                 >
                   <FiInstagram className="w-6 h-6 sm:w-7 sm:h-7" />
@@ -502,7 +504,7 @@ export default function Home() {
                   href="https://www.linkedin.com/in/kshitijjain-dev/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-gray-200/90 flex items-center justify-center text-black hover:border-black hover:bg-black hover:text-white transition-all duration-200 text-lg sm:text-xl font-sans font-bold shadow-xs"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-gray-200/90 flex items-center justify-center text-black hover:border-black hover:bg-black hover:text-white transition-all duration-500 ease-in-out text-lg sm:text-xl font-sans font-bold shadow-xs"
                   title="LinkedIn"
                 >
                   in
@@ -511,7 +513,7 @@ export default function Home() {
                   href="https://x.com/k_shit_jain"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-gray-200/90 flex items-center justify-center text-black hover:border-black hover:bg-black hover:text-white transition-all duration-200 font-bold text-xl sm:text-2xl shadow-xs"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-gray-200/90 flex items-center justify-center text-black hover:border-black hover:bg-black hover:text-white transition-all duration-500 ease-in-out font-bold text-xl sm:text-2xl shadow-xs"
                   title="X (Twitter)"
                 >
                   ✕
@@ -528,8 +530,8 @@ export default function Home() {
       <section
         className="w-full min-h-[70vh] sm:min-h-[135vh] bg-black text-white pb-36 sm:pb-52 relative z-20 flex flex-col items-center justify-start text-center overflow-x-clip -mt-10 sm:-mt-12"
         style={{
-          borderBottomLeftRadius: '50% 120px',
-          borderBottomRightRadius: '50% 120px'
+          borderBottomLeftRadius: '50% 15%',
+          borderBottomRightRadius: '50% 15%'
         }}
       >
         {/* TickerBar & Hands attached at the top of Black Section */}
@@ -594,7 +596,9 @@ export default function Home() {
 
             {/* Row 2: Founderflow */}
             <a
-              href="#founderflow"
+              href="https://github.com/notkshitij/FounderFlow"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full py-8 sm:py-10 border-b border-gray-300/70 flex items-center justify-between group cursor-pointer text-black hover:opacity-85 transition-all"
             >
               <div className="flex items-center gap-4 sm:gap-6">
@@ -610,8 +614,8 @@ export default function Home() {
           {/* Centered More Work Pill Button */}
           <div className="w-full flex justify-center pt-4 sm:pt-8">
             <button
-              onClick={() => {}}
-              className="px-7 py-2.5 rounded-full border border-gray-400 text-sm font-medium text-black bg-transparent hover:bg-black hover:text-white transition-all duration-200 cursor-pointer shadow-xs"
+              onClick={() => navigate('/work')}
+              className="px-7 py-2.5 rounded-full border border-gray-400 text-sm font-medium text-black bg-transparent hover:bg-black hover:text-white transition-all duration-500 ease-in-out cursor-pointer shadow-xs"
             >
               More work
             </button>
