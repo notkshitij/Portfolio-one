@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "./Components/Navbar";
 import SplashScreen from "./Components/SplashScreen";
 
@@ -8,6 +8,21 @@ import Home from "./Pages/Home";
 import { Skills } from "./Pages/Skills";
 import About from "./Pages/About";
 import Work from "./Pages/Work";
+
+// Premium Page Transition Wrapper
+const PageTransition = ({ children }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 18 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -18 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full flex flex-col min-h-screen"
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 function App() {
   const location = useLocation();
@@ -47,19 +62,21 @@ function App() {
   }, [showSplash]);
 
   return (
-    <div className="font-sans bg-white min-h-screen">
+    <div className="font-sans bg-white min-h-screen overflow-x-hidden relative">
       <AnimatePresence>
         {showSplash && <SplashScreen />}
       </AnimatePresence>
 
       <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/skills" element={<Skills />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/work" element={<Work />} />
-      </Routes>
+      <AnimatePresence mode="popLayout">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+          <Route path="/skills" element={<PageTransition><Skills /></PageTransition>} />
+          <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+          <Route path="/work" element={<PageTransition><Work /></PageTransition>} />
+        </Routes>
+      </AnimatePresence>
     </div>
   );
 }

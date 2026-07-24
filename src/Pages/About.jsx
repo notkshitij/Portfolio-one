@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowUpRight, FiArrowDownRight, FiCode, FiCpu, FiLayout, FiMail, FiMapPin } from 'react-icons/fi';
+import { SiReact, SiNextdotjs, SiNodedotjs, SiPython, SiFigma, SiGit } from 'react-icons/si';
 import img1 from '../assets/img1.jpeg';
 import img2 from '../assets/img2.jpeg';
 import img3 from '../assets/img3.jpeg';
@@ -60,25 +61,41 @@ export default function About() {
           className="flex flex-col items-center text-center mt-8 mb-8 sm:mb-12"
         >
           {/* Profile Photo */}
-          <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border border-black/10 shadow-sm select-none">
+          <div className="w-32 h-32 sm:w-32 sm:h-32 rounded-full overflow-hidden border border-black/10 shadow-md select-none">
             <img src={img1} alt="Profile" className="w-full h-full object-cover" />
           </div>
 
           {/* Headline */}
           <h1 
-            className="text-4xl sm:text-6xl font-normal leading-tight tracking-tight text-black mt-8 font-serif"
+            className="text-[42px] sm:text-6xl font-semibold tracking-tight text-neutral-950 mt-8 font-serif leading-[1.12]"
             style={{ fontFamily: '"Playfair Display", "DM Serif Display", Georgia, serif' }}
           >
-            I am the one who knocks
+            I am the one<br className="block sm:hidden" /> who knocks
           </h1>
 
-          {/* Bio Paragraph */}
-          <p className="max-w-3xl text-sm sm:text-base text-gray-500 font-medium leading-relaxed mt-5 px-4">
+          {/* Bio Paragraph (Desktop View - Single Block) */}
+          <p className="hidden sm:block max-w-2xl text-base text-neutral-800 font-medium leading-[1.65] mt-6 px-4">
             I'm just a curious guy who loves creating cool and fun stuff. I work at the intersection of clean full-stack dev and smart AI workflows, shipping responsive web apps that look premium and run fast. Based in Jaipur, India, I'm all about clean code, smooth animations, and building interfaces that actually feel alive. Whether I'm integrating LLMs or polishing micro-interactions in the IDE, I'm constantly cooking up digital experiences that bridge the gap between design and pure functionality.
           </p>
+
+          {/* Bio Paragraph (Mobile View - Split into 4 lines with close line spacing) */}
+          <div className="block sm:hidden max-w-2xl text-[17px] text-neutral-800 font-medium leading-[1.65] mt-6 px-4">
+            <p>
+              I'm just a curious guy who loves creating cool and fun stuff.
+            </p>
+            <p className="mt-1.5">
+              I work at the intersection of clean full-stack dev and smart AI workflows, shipping responsive web apps that look premium and run fast.
+            </p>
+            <p className="mt-1.5">
+              Based in Jaipur, India, I'm all about clean code, smooth animations, and building interfaces that actually feel alive.
+            </p>
+            <p className="mt-1.5">
+              Whether I'm integrating LLMs or polishing micro-interactions in the IDE, I'm constantly cooking up digital experiences that bridge the gap between design and pure functionality.
+            </p>
+          </div>
         </motion.div>
 
-        {/* Fanned Editorial Photo Cards */}
+        {/* Fanned Editorial Photo Cards (Desktop / Tablet View Only) */}
         {(() => {
           const cards = [
             { id: 1, src: img1, rotate: -10, translateX: -165, mobileTranslateX: -95, zIndex: 10 },
@@ -89,7 +106,7 @@ export default function About() {
           return (
             <motion.div 
               variants={itemVariants} 
-              className="flex justify-center items-center h-[380px] sm:h-[530px] mt-4 sm:mt-6 mb-16 sm:mb-24 overflow-visible select-none max-w-4xl mx-auto px-4"
+              className="hidden sm:flex justify-center items-center h-[530px] mt-6 mb-24 overflow-visible select-none max-w-4xl mx-auto px-4"
             >
               <div className="relative flex items-center justify-center w-full h-full">
                 {cards.map((card, idx) => {
@@ -142,6 +159,57 @@ export default function About() {
           );
         })()}
 
+        {/* Infinite Scrolling Photo Carousel (Mobile Phone View Only - Full bleed edge-to-edge) */}
+        <motion.div 
+          variants={itemVariants}
+          className="block sm:hidden w-screen -ml-6 overflow-hidden mt-6 mb-12 relative select-none"
+        >
+          <style>{`
+            @keyframes aboutMarquee {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            .animate-about-marquee {
+              animation: aboutMarquee 15s linear infinite;
+            }
+          `}</style>
+          
+          <div className="w-full overflow-hidden">
+            <div className="flex w-max animate-about-marquee">
+              {/* Group 1 */}
+              <div className="flex gap-4 pr-4">
+                {[img1, img2, img3, img4].map((src, idx) => (
+                  <div 
+                    key={`about-m-g1-${idx}`} 
+                    className="w-[145px] h-[200px] rounded-[20px] overflow-hidden border border-black/5 shrink-0 bg-white shadow-xs"
+                  >
+                    <img 
+                      src={src} 
+                      className="w-full h-full object-cover pointer-events-none" 
+                      alt={`Gallery ${idx}`} 
+                    />
+                  </div>
+                ))}
+              </div>
+              {/* Group 2 (Identical loop copy) */}
+              <div className="flex gap-4 pr-4" aria-hidden="true">
+                {[img1, img2, img3, img4].map((src, idx) => (
+                  <div 
+                    key={`about-m-g2-${idx}`} 
+                    className="w-[145px] h-[200px] rounded-[20px] overflow-hidden border border-black/5 shrink-0 bg-white shadow-xs"
+                  >
+                    <img 
+                      src={src} 
+                      className="w-full h-full object-cover pointer-events-none" 
+                      alt={`Gallery copy ${idx}`} 
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Bento Grid Section ("Beyond Portfolio") */}
         <motion.div variants={itemVariants} className="mt-16 sm:mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
@@ -153,7 +221,7 @@ export default function About() {
                   Beyond Portfolio
                 </span>
                 <h2 
-                  className="text-3xl sm:text-4xl lg:text-[42px] font-bold leading-[1.08] tracking-tight text-black font-serif"
+                  className="text-[38px] sm:text-4xl lg:text-[42px] font-bold leading-[1.08] tracking-tight text-black font-serif"
                   style={{ fontFamily: '"Playfair Display", "DM Serif Display", Georgia, serif' }}
                 >
                   Let's know more<br />about me
@@ -161,9 +229,14 @@ export default function About() {
               </div>
 
               {/* Spoken Language Card */}
-              <div className="bg-white rounded-[32px] p-6 sm:p-8 border border-black/10 shadow-2xs relative flex flex-col justify-between overflow-hidden min-h-[200px] h-fit cursor-default group">
+              <motion.div 
+                whileHover={{ y: -6, scale: 1.012 }}
+                whileTap={{ scale: 0.985 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-white rounded-[32px] p-6 sm:p-8 border border-black/10 shadow-2xs relative flex flex-col justify-between overflow-hidden min-h-[200px] h-fit cursor-pointer group"
+              >
                 {/* Lime Radial Gradient Hover Glow */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(184,245,0,0.3)_0%,rgba(184,245,0,0.05)_40%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(195,245,60,0.65)_0%,rgba(195,245,60,0.2)_45%,transparent_75%)] opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
 
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-2">
@@ -177,8 +250,8 @@ export default function About() {
                   <p className="text-sm text-gray-400 font-medium ml-12">Two languages, double the perspective.</p>
                 </div>
 
-                {/* Static Side-by-Side Language Tags */}
-                <div className="flex flex-row justify-center items-center gap-3 my-6 relative z-10">
+                {/* Static Side-by-Side Language Tags (Desktop only) */}
+                <div className="hidden sm:flex flex-row justify-center items-center gap-3 my-6 relative z-10">
                   {/* English Card */}
                   <div className="bg-white border border-black/8 rounded-2xl p-2 px-3 flex items-center gap-2.5 w-38 shadow-xs cursor-default">
                     <div className="w-9 h-9 rounded-full bg-[#f4f2ec] flex items-center justify-center overflow-hidden shrink-0 border border-black/5 select-none shadow-3xs">
@@ -214,22 +287,53 @@ export default function About() {
                   </div>
                 </div>
 
-                {/* 3D Wireframe Globe */}
-                <div className="relative w-full aspect-square bg-black rounded-full overflow-hidden flex items-center justify-center -mb-28 sm:-mb-36 mt-4 z-10">
+                {/* Overlapping Language Tags (Mobile only) */}
+                <div className="flex sm:hidden justify-center items-center h-28 my-6 relative z-10 w-full">
+                  {/* English Card */}
+                  <div className="absolute left-[8%] top-0 -rotate-8 bg-white border border-black/8 rounded-2xl p-2 px-3 flex items-center gap-2.5 w-36 shadow-xs select-none">
+                    <div className="w-8 h-8 rounded-full bg-[#f4f2ec] flex items-center justify-center overflow-hidden shrink-0 border border-black/5 shadow-3xs">
+                      <svg viewBox="0 0 60 30" className="w-6.5 h-auto">
+                        <rect width="60" height="30" fill="#012169" />
+                        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" />
+                        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#c8102e" strokeWidth="4" />
+                        <path d="M30,0 V30 M0,15 H60" stroke="#fff" strokeWidth="10" />
+                        <path d="M30,0 V30 M0,15 H60" stroke="#c8102e" strokeWidth="6" />
+                      </svg>
+                    </div>
+                    <div className="text-xs font-semibold leading-tight">
+                      <p className="text-black text-xs font-bold">English</p>
+                      <p className="text-gray-400 font-medium">Fluent</p>
+                    </div>
+                  </div>
+
+                  {/* Hindi Card (Overlapping) */}
+                  <div className="absolute right-[8%] top-3 rotate-6 bg-white border border-black/10 rounded-2xl p-2.5 px-3.5 flex items-center gap-2.5 w-38 shadow-md select-none">
+                    <div className="w-8 h-8 rounded-full bg-[#f4f2ec] flex items-center justify-center overflow-hidden shrink-0 border border-black/5 shadow-3xs">
+                      <svg viewBox="0 0 90 60" className="w-6.5 h-auto">
+                        <rect width="90" height="20" fill="#FF9933" />
+                        <rect y="20" width="90" height="20" fill="#FFFFFF" />
+                        <rect y="40" width="90" height="20" fill="#138808" />
+                        <circle cx="45" cy="30" r="8" fill="none" stroke="#000080" strokeWidth="1.2" />
+                        <circle cx="45" cy="30" r="1.5" fill="#000080" />
+                        <path d="M45,22 V38 M37,30 H53 M39.4,24.4 L50.6,35.6 M39.4,35.6 L50.6,24.4" stroke="#000080" strokeWidth="0.6" />
+                      </svg>
+                    </div>
+                    <div className="text-xs font-semibold leading-tight">
+                      <p className="text-black text-xs font-bold">Hindi</p>
+                      <p className="text-gray-500 font-medium">Native</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3D Wireframe Globe (Desktop only) */}
+                <div className="hidden sm:flex relative w-full aspect-square bg-black rounded-full overflow-hidden items-center justify-center -mb-28 sm:-mb-36 mt-4 z-10">
                   <svg viewBox="0 0 200 200" className="w-full h-full text-white/30 stroke-current fill-none animate-[spin_32s_linear_infinite]">
-                    {/* Simplified Continents */}
                     <g className="fill-white/8 stroke-white/12" strokeWidth="0.75">
-                      {/* Asia & Europe */}
                       <path d="M120,40 Q130,30 150,35 Q170,40 180,60 Q185,75 175,90 Q160,110 170,130 Q165,140 150,135 Q135,130 130,120 Q120,115 115,100 Q105,95 110,80 Q100,70 120,40 Z" />
-                      {/* Africa */}
                       <path d="M80,50 Q95,45 105,60 Q100,75 90,80 Q85,95 75,100 Q70,120 60,110 Q55,95 65,85 Q60,70 80,50 Z" />
-                      {/* Americas */}
                       <path d="M30,60 Q45,55 55,70 Q50,90 45,100 Q48,120 40,130 Q35,145 38,160 Q32,150 25,130 Q28,110 32,95 Q25,80 30,60 Z" />
-                      {/* Australia */}
                       <path d="M140,145 Q155,140 165,150 Q160,165 145,160 Q135,155 140,145 Z" />
                     </g>
-
-                    {/* Earth Grid Overlay */}
                     <circle cx="100" cy="100" r="90" strokeWidth="1" strokeDasharray="2 4" />
                     <ellipse cx="100" cy="100" rx="90" ry="30" strokeWidth="1" strokeDasharray="2 4" />
                     <ellipse cx="100" cy="100" rx="90" ry="60" strokeWidth="1" strokeDasharray="2 4" />
@@ -240,15 +344,40 @@ export default function About() {
                   </svg>
                   <div className="absolute inset-0 bg-radial-gradient from-transparent to-black/85 pointer-events-none" />
                 </div>
-              </div>
+
+                {/* Constrained Dotted Globe (Mobile only) */}
+                <div className="flex sm:hidden relative w-48 h-48 bg-black rounded-full overflow-hidden items-center justify-center -mb-20 mt-4 mx-auto z-10">
+                  <svg viewBox="0 0 200 200" className="w-full h-full text-white/30 stroke-current fill-none animate-[spin_32s_linear_infinite]">
+                    <g className="fill-white/8 stroke-white/12" strokeWidth="0.75">
+                      <path d="M120,40 Q130,30 150,35 Q170,40 180,60 Q185,75 175,90 Q160,110 170,130 Q165,140 150,135 Q135,130 130,120 Q120,115 115,100 Q105,95 110,80 Q100,70 120,40 Z" />
+                      <path d="M80,50 Q95,45 105,60 Q100,75 90,80 Q85,95 75,100 Q70,120 60,110 Q55,95 65,85 Q60,70 80,50 Z" />
+                      <path d="M30,60 Q45,55 55,70 Q50,90 45,100 Q48,120 40,130 Q35,145 38,160 Q32,150 25,130 Q28,110 32,95 Q25,80 30,60 Z" />
+                      <path d="M140,145 Q155,140 165,150 Q160,165 145,160 Q135,155 140,145 Z" />
+                    </g>
+                    <circle cx="100" cy="100" r="90" strokeWidth="1" strokeDasharray="2 4" />
+                    <ellipse cx="100" cy="100" rx="90" ry="30" strokeWidth="1" strokeDasharray="2 4" />
+                    <ellipse cx="100" cy="100" rx="90" ry="60" strokeWidth="1" strokeDasharray="2 4" />
+                    <ellipse cx="100" cy="100" rx="30" ry="90" strokeWidth="1" strokeDasharray="2 4" />
+                    <ellipse cx="100" cy="100" rx="60" ry="90" strokeWidth="1" strokeDasharray="2 4" />
+                    <line x1="10" y1="100" x2="190" y2="100" strokeWidth="1" strokeDasharray="2 4" />
+                    <line x1="100" y1="10" x2="100" y2="190" strokeWidth="1" strokeDasharray="2 4" />
+                  </svg>
+                  <div className="absolute inset-0 bg-radial-gradient from-transparent to-black/85 pointer-events-none" />
+                </div>
+              </motion.div>
             </div>
 
             {/* Middle Column: Tech Stacks & Values (lg:col-span-4) */}
             <div className="lg:col-span-4 flex flex-col gap-6">
               {/* Tech Stack Card */}
-              <div className="bg-white rounded-[32px] p-6 sm:p-8 border border-black/10 shadow-2xs flex flex-col justify-between min-h-[220px] cursor-default relative overflow-hidden group">
+              <motion.div 
+                whileHover={{ y: -6, scale: 1.012 }}
+                whileTap={{ scale: 0.985 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-white rounded-[32px] p-6 sm:p-8 border border-black/10 shadow-2xs flex flex-col justify-between min-h-[220px] cursor-pointer relative overflow-hidden group"
+              >
                 {/* Lime Radial Gradient Hover Glow */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(184,245,0,0.3)_0%,rgba(184,245,0,0.05)_40%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(195,245,60,0.65)_0%,rgba(195,245,60,0.2)_45%,transparent_75%)] opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
 
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-2">
@@ -262,8 +391,8 @@ export default function About() {
                   <p className="text-sm text-gray-400 font-medium ml-12">If you like using these tools too, we'll get along just fine.</p>
                 </div>
 
-                {/* Scrolling Tech Marquees */}
-                <div className="relative w-full overflow-hidden mt-6 flex flex-col gap-3 py-1 z-10">
+                {/* Scrolling Tech Marquees (Desktop only) */}
+                <div className="hidden sm:flex flex-col gap-3 py-1 relative w-full overflow-hidden mt-6 z-10">
                   {/* Left & Right Fade Overlay */}
                   <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
                   <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
@@ -320,12 +449,36 @@ export default function About() {
                     </motion.div>
                   </div>
                 </div>
-              </div>
+
+                {/* Tech icon grid/row (Mobile only) */}
+                <div className="flex sm:hidden flex-wrap justify-center items-center gap-3 mt-6 py-1 relative w-full z-10">
+                  {[
+                    { icon: <SiReact className="w-6 h-6 text-[#61dafb]" /> },
+                    { icon: <SiNextdotjs className="w-6 h-6 text-black" /> },
+                    { icon: <SiNodedotjs className="w-6 h-6 text-[#339933]" /> },
+                    { icon: <SiPython className="w-6 h-6 text-[#3776ab]" /> },
+                    { icon: <SiFigma className="w-6 h-6 text-[#f24e1e]" /> },
+                    { icon: <SiGit className="w-6 h-6 text-[#f05032]" /> }
+                  ].map((item, idx) => (
+                    <div 
+                      key={`tech-icon-m-${idx}`} 
+                      className="w-13 h-13 rounded-[16px] bg-[#f4f2ec] border border-black/5 flex items-center justify-center shadow-3xs shrink-0 hover:scale-105 transition-transform duration-300"
+                    >
+                      {item.icon}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
 
               {/* Take a Look at My Values Card */}
-              <div className="bg-white rounded-[32px] p-6 sm:p-8 border border-black/10 shadow-2xs flex flex-col justify-between cursor-default relative overflow-hidden group">
+              <motion.div 
+                whileHover={{ y: -6, scale: 1.012 }}
+                whileTap={{ scale: 0.985 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-white rounded-[32px] p-6 sm:p-8 border border-black/10 shadow-2xs flex flex-col justify-between cursor-pointer relative overflow-hidden group"
+              >
                 {/* Lime Radial Gradient Hover Glow */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(184,245,0,0.3)_0%,rgba(184,245,0,0.05)_40%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(195,245,60,0.65)_0%,rgba(195,245,60,0.2)_45%,transparent_75%)] opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
 
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-2">
@@ -351,18 +504,23 @@ export default function About() {
                     Attention to detail
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Right Column: Map (lg:col-span-4) */}
             <div className="lg:col-span-4 flex flex-col">
               {/* Map Card */}
-              <div className="relative w-full flex-grow min-h-[300px] rounded-[32px] border border-black/10 overflow-hidden shadow-2xs group cursor-default">
+              <motion.div 
+                whileHover={{ y: -6, scale: 1.012 }}
+                whileTap={{ scale: 0.985 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="relative w-full flex-grow min-h-[300px] rounded-[32px] border border-black/10 overflow-hidden shadow-2xs group cursor-pointer"
+              >
                 {/* Map image */}
-                <img src={jaipurMap} alt="Jaipur Map" className="absolute inset-0 w-full h-full object-cover scale-[1.22] select-none group-hover:scale-[1.3] transition-transform duration-700 ease-out" />
+                <img src={jaipurMap} alt="Jaipur Map" className="absolute inset-0 w-full h-full object-cover scale-[1.22] select-none group-hover:scale-[1.3] group-active:scale-[1.3] transition-transform duration-700 ease-out" />
                 
                 {/* Lime Radial Gradient Hover Glow */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(184,245,0,0.3)_0%,rgba(184,245,0,0.05)_40%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(195,245,60,0.65)_0%,rgba(195,245,60,0.2)_45%,transparent_75%)] opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
                 
                 {/* Center Avatar Pin */}
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -381,7 +539,7 @@ export default function About() {
                   <span className="text-xs">📍</span>
                   <span className="text-xs font-bold text-black tracking-tight">Jaipur, RJ</span>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
           </div>

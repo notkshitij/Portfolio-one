@@ -15,6 +15,151 @@ const filterTabs = [
   { name: 'UI/UX',      color: 'bg-[#f4b97d] text-black' }
 ];
 
+// Dynamic background watermark generator based on project topic
+const getWatermarkSVG = (id) => {
+  switch (id) {
+    case 'fuudr':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-4 -bottom-6 w-36 h-36 text-[#ff0054]/8 fill-current rotate-12 pointer-events-none z-0">
+          <path d="M50,10 L90,80 L10,80 Z M35,45 C38,45 40,42 40,39 Z M65,45 C68,45 70,42 70,39 Z M50,65 C55,65 58,62 58,57 Z" />
+        </svg>
+      );
+    case 'thesolvers':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-6 -bottom-6 w-40 h-40 text-emerald-500/[0.04] fill-none stroke-current stroke-[2] pointer-events-none z-0">
+          <path d="M10,10 L90,10 L90,90 L10,90 Z M30,30 L70,30 L70,70 L30,70 Z" />
+          <line x1="10" y1="10" x2="90" y2="90" />
+          <line x1="90" y1="10" x2="10" y2="90" />
+        </svg>
+      );
+    case 'lathishop':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-4 -bottom-6 w-36 h-36 text-orange-600/[0.07] fill-none stroke-current stroke-[3] pointer-events-none z-0">
+          <path d="M20,30 H80 L75,80 H25 Z M35,30 V20 C35,12 65,12 65,20 V30" />
+          <circle cx="50" cy="55" r="10" />
+        </svg>
+      );
+    case 'clientsample':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-8 -bottom-8 w-44 h-44 text-[#334155]/[0.05] fill-none stroke-current stroke-[1.5] pointer-events-none z-0">
+          <rect x="10" y="20" width="80" height="50" rx="4" />
+          <line x1="10" y1="35" x2="90" y2="35" />
+          <circle cx="20" cy="27" r="2" fill="currentColor" />
+          <circle cx="28" cy="27" r="2" fill="currentColor" />
+          <circle cx="36" cy="27" r="2" fill="currentColor" />
+          <rect x="20" y="45" width="30" height="6" rx="1" />
+          <rect x="55" y="45" width="25" height="18" rx="1" />
+        </svg>
+      );
+    case 'linkaura':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-6 -bottom-6 w-36 h-36 text-[#6b21a8]/[0.06] fill-none stroke-current stroke-[2] pointer-events-none z-0">
+          <circle cx="30" cy="30" r="8" fill="currentColor" />
+          <circle cx="70" cy="30" r="8" fill="currentColor" />
+          <circle cx="50" cy="70" r="8" fill="currentColor" />
+          <line x1="30" y1="30" x2="70" y2="30" />
+          <line x1="30" y1="30" x2="50" y2="70" />
+          <line x1="70" y1="30" x2="50" y2="70" />
+        </svg>
+      );
+    case 'zorvyn':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-4 -bottom-6 w-36 h-36 text-[#38bdf8]/[0.05] fill-none stroke-current stroke-[3] pointer-events-none z-0">
+          <path d="M10,80 L30,55 L50,65 L90,20" />
+          <circle cx="90" cy="20" r="4" fill="currentColor" />
+          <line x1="10" y1="80" x2="90" y2="80" />
+        </svg>
+      );
+    case 'founderflow':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-6 -bottom-6 w-36 h-36 text-white/[0.05] fill-none stroke-current stroke-[2.5] pointer-events-none z-0">
+          <rect x="15" y="15" width="25" height="20" rx="3" />
+          <rect x="55" y="55" width="30" height="25" rx="3" />
+          <path d="M30,35 V65 H55" />
+          <polygon points="55,60 62,65 55,70" fill="currentColor" />
+        </svg>
+      );
+    case 'clyro':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-6 -bottom-6 w-36 h-36 text-orange-100/[0.06] fill-none stroke-current stroke-[2] pointer-events-none z-0">
+          <rect x="15" y="15" width="40" height="45" rx="3" />
+          <rect x="40" y="30" width="45" height="50" rx="3" className="rotate-12" />
+        </svg>
+      );
+    case 'portfolio':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-4 -bottom-4 w-32 h-32 text-white/[0.03] fill-current pointer-events-none z-0 font-sans font-black">
+          <text x="10" y="80" fontSize="75">K</text>
+        </svg>
+      );
+    case 'autoslay':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-6 -bottom-6 w-36 h-36 text-[#0f3c21]/[0.05] fill-none stroke-current stroke-[2] pointer-events-none z-0">
+          <circle cx="50" cy="50" r="20" />
+          <path d="M50,15 V30 M50,70 V85 M15,50 H30 M70,50 H85" />
+          <path d="M25,25 L35,35 M65,65 L75,75 M75,25 L65,35 M35,65 L25,75" />
+        </svg>
+      );
+    case 'cuetpro':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-4 -bottom-6 w-36 h-36 text-white/[0.04] fill-none stroke-current stroke-[2] pointer-events-none z-0">
+          <rect x="20" y="15" width="55" height="70" rx="4" />
+          <line x1="30" y1="30" x2="65" y2="30" />
+          <line x1="30" y1="45" x2="65" y2="45" />
+          <path d="M30,65 L40,75 L65,50" />
+        </svg>
+      );
+    case 'solversstudio':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-6 -bottom-6 w-36 h-36 text-neutral-900/[0.04] fill-none stroke-current stroke-[2] pointer-events-none z-0">
+          <rect x="15" y="15" width="70" height="70" rx="4" />
+          <line x1="15" y1="50" x2="85" y2="50" />
+          <line x1="50" y1="15" x2="50" y2="85" />
+        </svg>
+      );
+    case 'campusleague':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-6 -bottom-6 w-36 h-36 text-[#f43f5e]/[0.05] fill-none stroke-current stroke-[2] pointer-events-none z-0">
+          <circle cx="50" cy="50" r="30" />
+          <path d="M20,50 Q50,70 80,50 M50,20 Q50,50 50,80" />
+        </svg>
+      );
+    case 'zkshield':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-6 -bottom-6 w-36 h-36 text-[#a855f7]/[0.06] fill-none stroke-current stroke-[2] pointer-events-none z-0">
+          <polygon points="50,15 80,30 80,65 50,85 20,65 20,30" />
+          <path d="M50,15 V85 M20,30 L80,65 M20,65 L80,30" />
+        </svg>
+      );
+    case 'dailywages':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-4 -bottom-6 w-36 h-36 text-[#5c3e21]/[0.05] fill-none stroke-current stroke-[2.5] pointer-events-none z-0">
+          <rect x="15" y="25" width="70" height="50" rx="4" />
+          <circle cx="50" cy="50" r="14" />
+          <text x="44" y="58" fontSize="20" fill="currentColor" stroke="none" className="font-bold">$</text>
+        </svg>
+      );
+    case 'sih-college':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-6 -bottom-6 w-36 h-36 text-[#0f766e]/[0.06] fill-none stroke-current stroke-[2] pointer-events-none z-0">
+          <circle cx="50" cy="50" r="35" />
+          <circle cx="50" cy="50" r="20" />
+          <circle cx="50" cy="50" r="5" fill="currentColor" />
+        </svg>
+      );
+    case 'sted':
+      return (
+        <svg viewBox="0 0 100 100" className="absolute -right-6 -bottom-6 w-36 h-36 text-[#b43c5c]/[0.06] fill-none stroke-current stroke-[2] pointer-events-none z-0">
+          <path d="M20,20 L35,15 L50,22 L65,15 L80,20" />
+          <path d="M20,40 Q50,20 80,40" />
+          <polygon points="50,45 60,65 80,65 65,75 70,95 50,80 30,95 35,75 20,65 40,65" fill="currentColor" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+};
+
 export default function Work() {
   const [activeTab, setActiveTab] = useState(null); // null means "All" are active / shown
 
@@ -483,7 +628,11 @@ export default function Work() {
 
   const filteredRow1 = filterRow(row1Cards);
   const filteredRow2 = filterRow(row2Cards);
-  const hasMatches = filteredRow1.length > 0 || filteredRow2.length > 0;
+
+  const allCards = [...row1Cards, ...row2Cards];
+  const filteredAll = activeTab === null ? allCards : allCards.filter(card => card.tags.includes(activeTab));
+
+  const hasMatches = filteredAll.length > 0;
 
   return (
     <div className="text-black bg-[#f4f2ec] overflow-x-clip min-h-screen pt-24 sm:pt-28 font-sans select-none flex flex-col justify-between relative" style={FONT}>
@@ -547,8 +696,8 @@ export default function Work() {
           </div>
         </div>
 
-        {/* 2. INFINITE CONTINUOUS MARQUEE WORK CAROUSEL TRACK */}
-        <div className="w-full overflow-hidden py-1 sm:py-2 scrollbar-none relative z-20 flex flex-col gap-5 sm:gap-6 mb-16 sm:mb-24">
+        {/* 2. WORK CAROUSEL / LIST SECTION */}
+        <div className="w-full py-1 sm:py-2 scrollbar-none relative z-20 mb-16 sm:mb-24">
           
           <style>{`
             @keyframes workMarquee {
@@ -575,65 +724,160 @@ export default function Work() {
             </div>
           ) : (
             <>
-              {/* Row 1: Leftwards Scrolling */}
-              {filteredRow1.length > 0 && (
-                <div className="w-full overflow-hidden">
-                  <div className="flex w-max animate-work-marquee hover:[animation-play-state:paused]">
-                    {/* Group 1 */}
-                    <div className="flex gap-5 pr-5">
-                      {filteredRow1.map((card) => (
-                        <div
-                          key={`g1-r1-${card.id}`}
-                          className="w-[240px] sm:w-[300px] h-[310px] sm:h-[390px] rounded-[32px] overflow-hidden shadow-3xs hover:shadow-sm transition-shadow duration-300 border border-black/5 shrink-0 origin-center bg-white"
-                        >
-                          {card.element}
-                        </div>
-                      ))}
-                    </div>
-                    {/* Group 2 */}
-                    <div className="flex gap-5 pr-5" aria-hidden="true">
-                      {filteredRow1.map((card) => (
-                        <div
-                          key={`g2-r1-${card.id}`}
-                          className="w-[240px] sm:w-[300px] h-[310px] sm:h-[390px] rounded-[32px] overflow-hidden shadow-3xs hover:shadow-sm transition-shadow duration-300 border border-black/5 shrink-0 origin-center bg-white"
-                        >
-                          {card.element}
-                        </div>
-                      ))}
+              {/* Desktop Scrolling Tracks (Hidden on Mobile) */}
+              <div className="hidden sm:flex flex-col gap-5 sm:gap-6 w-full overflow-hidden">
+                {/* Row 1: Leftwards Scrolling */}
+                {filteredRow1.length > 0 && (
+                  <div className="w-full overflow-hidden">
+                    <div className="flex w-max animate-work-marquee hover:[animation-play-state:paused]">
+                      {/* Group 1 */}
+                      <div className="flex gap-5 pr-5">
+                        {filteredRow1.map((card) => (
+                          <div
+                            key={`g1-r1-${card.id}`}
+                            className="w-[240px] sm:w-[300px] h-[310px] sm:h-[390px] rounded-[32px] overflow-hidden shadow-3xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 border border-black/5 shrink-0 origin-center bg-white relative group cursor-pointer"
+                          >
+                            {card.element}
+                            {getWatermarkSVG(card.id)}
+                            {/* Glass overlay + organic noise texture */}
+                            <div className="absolute inset-0 pointer-events-none z-10 opacity-[0.06] mix-blend-overlay">
+                              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                                <filter id={`noise-g1-r1-${card.id}`}>
+                                  <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
+                                </filter>
+                                <rect width="100%" height="100%" filter={`url(#noise-g1-r1-${card.id})`} />
+                              </svg>
+                            </div>
+                            {/* Subtle inner border */}
+                            <div className="absolute inset-0 rounded-[32px] border border-white/10 pointer-events-none z-20" />
+                            {/* Diagonal shine sweep on hover */}
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20">
+                              <div className="w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-[50%] -translate-y-[50%] group-hover:translate-x-[50%] group-hover:translate-y-[50%] transition-transform duration-[1.2s] ease-in-out" />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      {/* Group 2 */}
+                      <div className="flex gap-5 pr-5" aria-hidden="true">
+                        {filteredRow1.map((card) => (
+                          <div
+                            key={`g2-r1-${card.id}`}
+                            className="w-[240px] sm:w-[300px] h-[310px] sm:h-[390px] rounded-[32px] overflow-hidden shadow-3xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 border border-black/5 shrink-0 origin-center bg-white relative group cursor-pointer"
+                          >
+                            {card.element}
+                            {getWatermarkSVG(card.id)}
+                            {/* Glass overlay + organic noise texture */}
+                            <div className="absolute inset-0 pointer-events-none z-10 opacity-[0.06] mix-blend-overlay">
+                              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                                <filter id={`noise-g2-r1-${card.id}`}>
+                                  <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
+                                </filter>
+                                <rect width="100%" height="100%" filter={`url(#noise-g2-r1-${card.id})`} />
+                              </svg>
+                            </div>
+                            {/* Subtle inner border */}
+                            <div className="absolute inset-0 rounded-[32px] border border-white/10 pointer-events-none z-20" />
+                            {/* Diagonal shine sweep on hover */}
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20">
+                              <div className="w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-[50%] -translate-y-[50%] group-hover:translate-x-[50%] group-hover:translate-y-[50%] transition-transform duration-[1.2s] ease-in-out" />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {/* Row 2: Rightwards Scrolling */}
-              {filteredRow2.length > 0 && (
-                <div className="w-full overflow-hidden">
-                  <div className="flex w-max animate-work-marquee-reverse hover:[animation-play-state:paused]">
-                    {/* Group 1 */}
-                    <div className="flex gap-5 pr-5">
-                      {filteredRow2.map((card) => (
-                        <div
-                          key={`g1-r2-${card.id}`}
-                          className="w-[240px] sm:w-[300px] h-[310px] sm:h-[390px] rounded-[32px] overflow-hidden shadow-3xs hover:shadow-sm transition-shadow duration-300 border border-black/5 shrink-0 origin-center bg-white"
-                        >
-                          {card.element}
-                        </div>
-                      ))}
-                    </div>
-                    {/* Group 2 */}
-                    <div className="flex gap-5 pr-5" aria-hidden="true">
-                      {filteredRow2.map((card) => (
-                        <div
-                          key={`g2-r2-${card.id}`}
-                          className="w-[240px] sm:w-[300px] h-[310px] sm:h-[390px] rounded-[32px] overflow-hidden shadow-3xs hover:shadow-sm transition-shadow duration-300 border border-black/5 shrink-0 origin-center bg-white"
-                        >
-                          {card.element}
-                        </div>
-                      ))}
+                {/* Row 2: Rightwards Scrolling */}
+                {filteredRow2.length > 0 && (
+                  <div className="w-full overflow-hidden">
+                    <div className="flex w-max animate-work-marquee-reverse hover:[animation-play-state:paused]">
+                      {/* Group 1 */}
+                      <div className="flex gap-5 pr-5">
+                        {filteredRow2.map((card) => (
+                          <div
+                            key={`g1-r2-${card.id}`}
+                            className="w-[240px] sm:w-[300px] h-[310px] sm:h-[390px] rounded-[32px] overflow-hidden shadow-3xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 border border-black/5 shrink-0 origin-center bg-white relative group cursor-pointer"
+                          >
+                            {card.element}
+                            {getWatermarkSVG(card.id)}
+                            {/* Glass overlay + organic noise texture */}
+                            <div className="absolute inset-0 pointer-events-none z-10 opacity-[0.06] mix-blend-overlay">
+                              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                                <filter id={`noise-g1-r2-${card.id}`}>
+                                  <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
+                                </filter>
+                                <rect width="100%" height="100%" filter={`url(#noise-g1-r2-${card.id})`} />
+                              </svg>
+                            </div>
+                            {/* Subtle inner border */}
+                            <div className="absolute inset-0 rounded-[32px] border border-white/10 pointer-events-none z-20" />
+                            {/* Diagonal shine sweep on hover */}
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20">
+                              <div className="w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-[50%] -translate-y-[50%] group-hover:translate-x-[50%] group-hover:translate-y-[50%] transition-transform duration-[1.2s] ease-in-out" />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      {/* Group 2 */}
+                      <div className="flex gap-5 pr-5" aria-hidden="true">
+                        {filteredRow2.map((card) => (
+                          <div
+                            key={`g2-r2-${card.id}`}
+                            className="w-[240px] sm:w-[300px] h-[310px] sm:h-[390px] rounded-[32px] overflow-hidden shadow-3xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 border border-black/5 shrink-0 origin-center bg-white relative group cursor-pointer"
+                          >
+                            {card.element}
+                            {getWatermarkSVG(card.id)}
+                            {/* Glass overlay + organic noise texture */}
+                            <div className="absolute inset-0 pointer-events-none z-10 opacity-[0.06] mix-blend-overlay">
+                              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                                <filter id={`noise-g2-r2-${card.id}`}>
+                                  <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
+                                </filter>
+                                <rect width="100%" height="100%" filter={`url(#noise-g2-r2-${card.id})`} />
+                              </svg>
+                            </div>
+                            {/* Subtle inner border */}
+                            <div className="absolute inset-0 rounded-[32px] border border-white/10 pointer-events-none z-20" />
+                            {/* Diagonal shine sweep on hover */}
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20">
+                              <div className="w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-[50%] -translate-y-[50%] group-hover:translate-x-[50%] group-hover:translate-y-[50%] transition-transform duration-[1.2s] ease-in-out" />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
+
+              {/* Mobile Vertical Grid - One by One (Visible on Mobile Only) */}
+              <div className="flex sm:hidden flex-col items-center gap-6 w-full px-6">
+                {filteredAll.map((card) => (
+                  <div
+                    key={`mob-stacked-${card.id}`}
+                    className="w-full max-w-[310px] h-[380px] rounded-[32px] overflow-hidden shadow-3xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 border border-black/5 bg-white shrink-0 relative group cursor-pointer"
+                  >
+                    {card.element}
+                            {getWatermarkSVG(card.id)}
+                    {/* Glass overlay + organic noise texture */}
+                    <div className="absolute inset-0 pointer-events-none z-10 opacity-[0.06] mix-blend-overlay">
+                      <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                        <filter id={`noise-mob-${card.id}`}>
+                          <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
+                        </filter>
+                        <rect width="100%" height="100%" filter={`url(#noise-mob-${card.id})`} />
+                      </svg>
+                    </div>
+                    {/* Subtle inner border */}
+                    <div className="absolute inset-0 rounded-[32px] border border-white/10 pointer-events-none z-20" />
+                    {/* Diagonal shine sweep on hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20">
+                      <div className="w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-[50%] -translate-y-[50%] group-hover:translate-x-[50%] group-hover:translate-y-[50%] transition-transform duration-[1.2s] ease-in-out" />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </>
           )}
         </div>
