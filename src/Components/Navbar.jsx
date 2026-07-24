@@ -29,6 +29,14 @@ export default function Navbar() {
       window.location.href = 'mailto:borbreak@gmail.com';
       return;
     }
+    if (sectionId === 'about') {
+      navigate('/about');
+      return;
+    }
+    if (sectionId === 'work') {
+      navigate('/work');
+      return;
+    }
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
@@ -51,37 +59,39 @@ export default function Navbar() {
     { name: 'Contact', id: 'contact' },
   ];
 
-  // Completely unmount/remove navbar when scrolled past Hero section
-  if (!isHeroVisible) {
+  const isSubPage = location.pathname === '/about' || location.pathname === '/skills' || location.pathname === '/work';
+
+  // Completely unmount/remove navbar when scrolled past Hero section (only on home page)
+  if (!isSubPage && !isHeroVisible) {
     return null;
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] w-full bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 flex items-center justify-between">
+    <header className={`${isSubPage ? 'absolute' : 'fixed'} top-3 sm:top-5 left-0 right-0 z-[100] w-full bg-transparent`}>
+      <div className="max-w-5xl mx-auto px-6 sm:px-12 md:px-16 py-3 flex items-center justify-between">
         
         {/* Left: Avatar + kshitij. */}
         <button
           onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          className="flex items-center gap-2 group cursor-pointer border-none bg-transparent px-2.5 py-1.5 rounded-2xl hover:bg-gray-100/90 transition-all duration-200 select-none"
+          className="flex items-center gap-2 group cursor-pointer border-none bg-transparent px-2 py-1 rounded-xl hover:bg-gray-100/90 transition-all duration-500 ease-in-out select-none"
         >
           <img
             src={avatarImg}
             alt="Kshitij avatar"
-            className="w-7 h-7 md:w-8 md:h-8 rounded-full object-cover transition-transform group-hover:scale-105"
+            className="w-6.5 h-6.5 md:w-7 md:h-7 rounded-full object-cover transition-transform group-hover:scale-105"
           />
-          <span className="hidden sm:inline text-base md:text-lg font-medium tracking-tight text-gray-900 group-hover:text-black transition-colors">
+          <span className="hidden sm:inline text-sm md:text-base font-semibold tracking-tight text-gray-900 group-hover:text-black transition-colors">
             kshitij.
           </span>
         </button>
 
         {/* Nav Links directly visible on both Mobile and Desktop */}
-        <nav className="flex items-center gap-1.5 sm:gap-3">
+        <nav className="flex items-center gap-1 sm:gap-2">
           {navLinks.map((link) => (
             <button
               key={link.id}
               onClick={() => scrollToSection(link.id)}
-              className="text-sm sm:text-base md:text-lg font-medium text-gray-700 px-2 sm:px-3.5 py-1 sm:py-1.5 rounded-xl sm:rounded-2xl hover:bg-gray-100/90 transition-all duration-200 cursor-pointer border-none bg-transparent"
+              className="text-xs sm:text-sm md:text-[15px] font-semibold text-gray-700 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-lg sm:rounded-xl hover:bg-gray-100/90 transition-all duration-500 ease-in-out cursor-pointer border-none bg-transparent"
             >
               {link.name}
             </button>
